@@ -1,4 +1,3 @@
-
 //Dummy variables
 let disp = "";
 let screen = document.getElementById("display");
@@ -23,7 +22,6 @@ const resetDisplay = () => {
 //Event Listeners
 
     //document.addEventListener("keypress", keyBoard);
-    //document.getElementById("zero").onclick = () => makeItWork("0");
     document.getElementById("zero").addEventListener("click", () => makeItWork("0"));
     document.getElementById("one").addEventListener("click", () => makeItWork("1"));
     document.getElementById("two").addEventListener("click", () => makeItWork("2"));
@@ -35,9 +33,9 @@ const resetDisplay = () => {
     document.getElementById("eight").addEventListener("click", () => makeItWork("8"));
     document.getElementById("nine").addEventListener("click", () => makeItWork("9"));
     document.getElementById("delete").addEventListener("click", resetDisplay);
-    document.getElementById("divide").addEventListener("click", () => makeItWork("/"));
-    document.getElementById("multiply").addEventListener("click", () => makeItWork("*"));
-    document.getElementById("minus").addEventListener("click", () => makeItWork("-"));
+    document.getElementById("divide").addEventListener("click", () => makeItWork("÷"));
+    document.getElementById("multiply").addEventListener("click", () => makeItWork("×"));
+    document.getElementById("minus").addEventListener("click", () => makeItWork("−"));
     document.getElementById("add").addEventListener("click", () => makeItWork("+"));
 
 
