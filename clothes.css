@@ -16,6 +16,8 @@ body {
 .calc-output {
     grid-area: a;
     border: 1px solid rebeccapurple;
+    text-align: right;
+    padding-right: 0.5rem;
 }
 
 .calc-main {
