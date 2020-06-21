@@ -1,0 +1,31 @@
+body {
+    margin: auto;
+    width: 70%;
+}
+
+#calc {
+    display: grid;
+    grid-template-areas: 
+        "a a a a"
+        "b b b c"
+        "b b b c"
+        "b b b c"
+        "b b b c";
+}
+
+.calc-output {
+    grid-area: a;
+    border: 1px solid rebeccapurple;
+}
+
+.calc-main {
+    grid-area: b;
+    display: grid;
+    grid-template-columns: repeat(3, 33%);
+}
+
+.calc-operators {
+    grid-area: c;
+    display: grid;
+    grid-template-columns: 100%;
+}
