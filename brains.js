@@ -17,7 +17,6 @@ const resetDisplay = () => {
 
 const calculate = () => {
     let arr = disp.split(" ");
-    console.log(arr);
     
     for (let i = 0; i < arr.length; i++) {
         switch (arr[i]) {
@@ -67,7 +66,6 @@ const minusF = (num1, num2) => num1 - num2;
 //};
 
 //Event Listeners
-
     //document.addEventListener("keypress", keyBoard);
     document.getElementById("zero").addEventListener("click", () => makeItWork("0"));
     document.getElementById("one").addEventListener("click", () => makeItWork("1"));
