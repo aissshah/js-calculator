@@ -32,39 +32,71 @@ const resetDisplay = () => {
 
 const calculate = () => {
     let arr = disp.split(" ");
-    
-    if (lastInput == "×" || lastInput == "÷" || lastInput == "+" || lastInput == "−") {
-
-    }
+    //line below filters empty elements
+    arr = arr.filter(em => em);
 
     for (let i = 0; i < arr.length; i++) {
         switch (arr[i]) {
             case "×":
-                if (answer === 0) {
-                    answer = Number(arr[i-1]) * Number(arr[i+1]);
+                if (arr[i+1] == "−") {
+                    if (answer === 0) {
+                        answer = Number(arr[i-1]) * -(Number(arr[i+2]));
+                    } else {
+                        answer *= -Number(arr[i+2]);
+                    };
                 } else {
-                    answer *= Number(arr[i+1]);
+                    if (answer === 0) {
+                        answer = Number(arr[i-1]) * Number(arr[i+1]);
+                    } else {
+                        answer *= Number(arr[i+1]);
+                    };
                 };
                 break;
             case "÷":
-                if (answer === 0) {
-                    answer = Number(arr[i-1]) / Number(arr[i+1]);
+                if (arr[i+1] == "−") {
+                    if (answer === 0) {
+                        answer = Number(arr[i-1]) / -Number(arr[i+2]);
+                    } else {
+                        answer /= -Number(arr[i+2]);
+                    };
                 } else {
-                    answer /= Number(arr[i+1]);
+                    if (answer === 0) {
+                        answer = Number(arr[i-1]) / Number(arr[i+1]);
+                    } else {
+                        answer /= Number(arr[i+1]);
+                    };
                 };
                 break;
             case "+":
-                if (answer === 0) {
-                    answer = Number(arr[i-1]) + Number(arr[i+1]);
+                if (arr[i+1] == "−") {
+                    if (answer === 0) {
+                        answer = Number(arr[i-1]) + -Number(arr[i+2]);
+                    } else {
+                        answer += -Number(arr[i+2]);
+                    };
                 } else {
-                    answer += Number(arr[i+1]);
+                    if (answer === 0) {
+                        answer = Number(arr[i-1]) + Number(arr[i+1]);
+                    } else {
+                        answer += Number(arr[i+1]);
+                    };
                 };
                 break;
             case "−":
-                if (answer === 0) {
-                    answer = Number(arr[i-1]) - Number(arr[i+1]);
+                if (arr[i+1] == "−") {
+                    if (answer === 0) {
+                        answer = Number(arr[i-1]) - -Number(arr[i+2]);
+                    } else {
+                        answer -= -Number(arr[i+2]);
+                    };
                 } else {
-                    answer -= Number(arr[i+1]);
+                    if (arr[i-1] == "×" || arr[i-1] === "÷" || arr[i-1] === "+" || arr[i-1] === "−") {
+                        break;
+                    } else if (answer === 0) {
+                        answer = Number(arr[i-1]) - Number(arr[i+1]);
+                    } else {
+                        answer -= Number(arr[i+1]);
+                    };
                 };
                 break;
         }
