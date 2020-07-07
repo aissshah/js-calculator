@@ -8,26 +8,37 @@ let decimalUsed = false;
 
 //Functions
 const makeItWork = val => {
-    if ((lastInput == " × " || lastInput == " ÷ " || lastInput == " + " || lastInput == " − ") && (val == " × " || val == " ÷ " || val == " + ")) {
-        let tempdisp = disp.substring(0, disp.length - 3);
-        disp = tempdisp;
+    //condition for multiple operators
+    if ((lastInput == " × " || lastInput == " ÷ " || lastInput == " + " || lastInput == " − ")) {
+        decimalUsed = false;
+        if (val == " × " || val == " ÷ " || val == " + ") {
+            let tempdisp = disp.substring(0, disp.length - 3);
+            disp = tempdisp;
+        }
+    }
+    //condition for decimals
+    if (val == ".") {
+        if (!decimalUsed) {
+            decimalUsed = true;
+            disp += val
+            screen.textContent = disp;
+            lastInput = val;
+        }
     } else {
-
+        disp += val
+        screen.textContent = disp;
+        lastInput = val;
     }
-
     
-    if (lastInput == "." && val == ".") {
-        //But I don't want it to do anything here
-    }
-    disp += val
-    screen.textContent = disp;
-    lastInput = val;
 }
 
 const resetDisplay = () => {
     screen.textContent = "0";
     disp = "";
     answer = 0;
+    lastInput = "";
+    isZero = false;
+    decimalUsed = false;
 }
 
 const calculate = () => {
