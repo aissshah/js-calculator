@@ -11,11 +11,18 @@ const makeItWork = val => {
     //condition for multiple operators
     if ((lastInput == " × " || lastInput == " ÷ " || lastInput == " + " || lastInput == " − ")) {
         decimalUsed = false;
+        isZero = false;
         if (val == " × " || val == " ÷ " || val == " + ") {
             let tempdisp = disp.substring(0, disp.length - 3);
             disp = tempdisp;
         }
     }
+
+    // attempting to address the instance of +.+
+    // if (lastInput == ".") && (val == " × " || val == " ÷ " || val == " + " || val == " − ") {
+    //     do nothing here. Bad practice - find another way
+    // }
+
     //condition for decimals
     if (val == ".") {
         if (!decimalUsed) {
@@ -24,6 +31,7 @@ const makeItWork = val => {
             screen.textContent = disp;
             lastInput = val;
         }
+        
     } else {
         disp += val
         screen.textContent = disp;
@@ -114,6 +122,7 @@ const calculate = () => {
     }
     
     screen.textContent = answer;
+    disp = answer;
 }
 
 const divideF = (num1, num2) => num1 / num2;
