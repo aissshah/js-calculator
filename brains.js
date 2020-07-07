@@ -2,11 +2,26 @@
 let disp = "";
 let screen = document.getElementById("display");
 let answer = 0;
+let lastInput = "";
+let isZero = false;
+let decimalUsed = false;
 
 //Functions
 const makeItWork = val => {
-    disp += val;
+    if ((lastInput == " × " || lastInput == " ÷ " || lastInput == " + " || lastInput == " − ") && (val == " × " || val == " ÷ " || val == " + ")) {
+        let tempdisp = disp.substring(0, disp.length - 3);
+        disp = tempdisp;
+    } else {
+
+    }
+
+    
+    if (lastInput == "." && val == ".") {
+        //But I don't want it to do anything here
+    }
+    disp += val
     screen.textContent = disp;
+    lastInput = val;
 }
 
 const resetDisplay = () => {
@@ -18,6 +33,10 @@ const resetDisplay = () => {
 const calculate = () => {
     let arr = disp.split(" ");
     
+    if (lastInput == "×" || lastInput == "÷" || lastInput == "+" || lastInput == "−") {
+
+    }
+
     for (let i = 0; i < arr.length; i++) {
         switch (arr[i]) {
             case "×":
