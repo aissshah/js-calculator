@@ -3,15 +3,15 @@ let disp = "";
 let screen = document.getElementById("display");
 let answer = 0;
 let lastInput = "";
-let isZero = false;
 let decimalUsed = false;
+let startNum = true;
 
 //Functions
 const makeItWork = val => {
     //condition for multiple operators
     if ((lastInput == " × " || lastInput == " ÷ " || lastInput == " + " || lastInput == " − ")) {
         decimalUsed = false;
-        isZero = false;
+        startNum = true;
         if (val == " × " || val == " ÷ " || val == " + ") {
             let tempdisp = disp.substring(0, disp.length - 3);
             disp = tempdisp;
@@ -26,18 +26,25 @@ const makeItWork = val => {
     //condition for decimals
     if (val == ".") {
         if (!decimalUsed) {
+            if (startNum) {
+                disp = "0";
+            }
             decimalUsed = true;
             disp += val
             screen.textContent = disp;
             lastInput = val;
         }
-        
+    } else if (startNum && lastInput == "0" && val == "0") {
+        disp = "";
     } else {
         disp += val
         screen.textContent = disp;
         lastInput = val;
     }
-    
+
+    if (val == "1" || val == "2" || val == "3" || val == "4" || val == "5" || val == "6" || val == "7" || val == "8" || val == "9" || val == ".") {
+        startNum = false;
+    }
 }
 
 const resetDisplay = () => {
@@ -45,7 +52,7 @@ const resetDisplay = () => {
     disp = "";
     answer = 0;
     lastInput = "";
-    isZero = false;
+    startNum = true;
     decimalUsed = false;
 }
 
@@ -53,6 +60,10 @@ const calculate = () => {
     let arr = disp.split(" ");
     //line below filters empty elements
     arr = arr.filter(em => em);
+
+    if (arr.length === 1) {
+        answer = Number(disp);
+    }
 
     for (let i = 0; i < arr.length; i++) {
         switch (arr[i]) {
