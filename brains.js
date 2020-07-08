@@ -26,7 +26,7 @@ const makeItWork = val => {
     //condition for decimals
     if (val == ".") {
         if (!decimalUsed) {
-            if (startNum) {
+            if (startNum && disp == "") {
                 disp = "0";
             }
             decimalUsed = true;
@@ -122,6 +122,8 @@ const calculate = () => {
                 } else {
                     if (arr[i-1] == "×" || arr[i-1] === "÷" || arr[i-1] === "+" || arr[i-1] === "−") {
                         break;
+                    } else if (i === 0) {
+                        answer = - Number(arr[i+1]);
                     } else if (answer === 0) {
                         answer = Number(arr[i-1]) - Number(arr[i+1]);
                     } else {
